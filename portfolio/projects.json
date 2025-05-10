@@ -1,0 +1,14 @@
+[
+    {
+        "title": "Crowd Sourced Disaster and Shelter Management System",
+        "description": "A Django and React JS based system for real-time disaster reporting and shelter coordination.",
+        "image": "/static/portfolio/images/disaster.png",
+        "url": "https://github.com/yourusername/disaster-app"
+    },
+    {
+        "title": "Personal Fit",
+        "description": "A Django and Machine Learning based mini project for personalized fitness recommendations.",
+        "image": "/static/portfolio/images/ai.png",
+        "url": "https://github.com/yourusername/personal-fit"
+    }
+]

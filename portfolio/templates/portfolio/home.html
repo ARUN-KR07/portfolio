@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Background Animation */
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .animated-background {
+            background: linear-gradient(45deg, #6ee7b7, #3b82f6, #9333ea);
+            background-size: 400% 400%;
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        /* Pointer hover animation */
+        .pointer-hover {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .pointer-hover:hover {
+            transform: scale(1.1);
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            animation: fadeIn 2s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Resume-style card */
+        .resume-card {
+            background-color: #1f2937;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .resume-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Card title hover animation */
+        .resume-card:hover .title {
+            color: #3b82f6;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-900 text-white font-sans animated-background">
+
+    <div class="container mx-auto px-4 py-12">
+        <!-- Header Section -->
+        <header class="text-center mb-12 fade-in">
+            <h1 class="text-5xl font-extrabold mb-4">ARUN K R</h1>
+            <p class="text-xl text-gray-400">WEB DEVELOPER</p>
+        </header>
+
+        <!-- Resume Cards Section -->
+        <section class="space-y-8">
+            <!-- About Me Section -->
+            <div class="resume-card fade-in pointer-hover">
+                <h2 class="text-3xl font-semibold title text-blue-400">About Me</h2>
+                <p class="mt-4 text-gray-300">I am a passionate Web Developer with a strong focus on creating beautiful, responsive, and user-friendly web applications. I specialize in Python, Django, and React.</p>
+            </div>
+
+            <!-- Education Section -->
+            <div class="resume-card fade-in pointer-hover">
+                <h2 class="text-3xl font-semibold title text-blue-400">Education</h2>
+                <ul class="mt-4 list-disc list-inside text-gray-300">
+                    <li>SSLC – 2016, MPM EMHSS Thammanam</li>
+                    <li>Higher Secondary – 2018, SRV HSS Ernakulam</li>
+                    <li>BCA – 2021, MG University Kerala</li>
+                    <li>MCA – 2025, A.P.J. Abdul Kalam Technological University</li>
+                </ul>
+            </div>
+
+            <!-- Internship Section -->
+            <div class="resume-card fade-in pointer-hover">
+                <h2 class="text-3xl font-semibold title text-blue-400">Internship</h2>
+                <p class="mt-4 text-gray-300">Full Stack Python Developer at Oneteam Solutions, Kochi (2021–2023)</p>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="resume-card fade-in pointer-hover">
+                <h2 class="text-3xl font-semibold title text-blue-400">Professional Skills</h2>
+                <ul class="mt-4 list-disc list-inside text-gray-300">
+                    <li>Python, Django</li>
+                    <li>HTML, CSS, JavaScript</li>
+                    <li>SQL</li>
+                    <li>React JS (Basics)</li>
+                    <li>Machine Learning</li>
+                </ul>
+            </div>
+
+            <!-- Languages Section -->
+            <div class="resume-card fade-in pointer-hover">
+                <h2 class="text-3xl font-semibold title text-blue-400">Languages</h2>
+                <p class="mt-4 text-gray-300">Malayalam, English</p>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>
