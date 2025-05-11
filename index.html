@@ -1,138 +1,330 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arun K R | Web Developer</title>
 
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Bootstrap + Font Awesome + AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-    <style>
-        /* Background Animation */
-        @keyframes gradient-animation {
-            0% {
-                background-position: 0% 50%;
-            }
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0a001f, #1a0536);
+      color: #e5e0ff;
+    }
+    h2, h5 {
+      font-weight: bold;
+      color: #d8b4fe;
+      text-shadow: 0 0 10px #c084fc, 0 0 20px #a855f7;
+    }
+    section {
+      background: linear-gradient(135deg, #1e0037, #31044d);
+    }
+    #loader {
+      position: fixed;
+      width: 100%; height: 100vh;
+      background: #0a001f;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .spinner-border {
+      width: 4rem;
+      height: 4rem;
+      color: #c084fc;
+    }
+    .hero {
+      min-height: 100vh;
+      background: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      color: white;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(25, 0, 56, 0.8);
+      z-index: -1;
+    }
+    .hero-content {
+      padding: 60px 30px;
+      text-shadow: 0 0 8px #c084fc;
+    }
+    .btn-violet {
+      background-color: #c084fc;
+      color: #0a001f;
+      border: none;
+      box-shadow: 0 0 15px #c084fc;
+      transition: 0.3s;
+    }
+    .btn-violet:hover {
+      background-color: #d8b4fe;
+      color: #0a001f;
+      box-shadow: 0 0 20px #a855f7;
+    }
+    .about-card {
+      background: linear-gradient(145deg, #340c60, #260042);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 0 25px #9333ea;
+      color: #f5e8ff;
+    }
+    .skill-block {
+      background-color: #2d145f;
+      border-radius: 12px;
+      padding: 20px 30px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: 0 0 10px #a855f7;
+      transition: transform 0.3s ease;
+    }
+    .skill-block:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #d946ef;
+    }
+    .skill-icon {
+      font-size: 2.5rem;
+      width: 60px;
+      text-align: center;
+      color: #d8b4fe;
+    }
+    .project-card {
+      background-color: #2b095a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 15px #9333ea;
+    }
+    .project-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #9333ea;
+    }
+    label {
+      color: #d8b4fe;
+      text-align: left;
+      display: block;
+      margin-bottom: 4px;
+    }
+    input, textarea {
+      background-color: #3b0a6d !important;
+      color: #fff !important;
+      border: 1px solid #a855f7 !important;
+    }
+    input::placeholder, textarea::placeholder {
+      color: #aaa;
+    }
+    footer {
+      background: #1e0037;
+      color: #d8b4fe;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    /* New animation for project section */
+    @keyframes slideInUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+    .project-card {
+      animation: slideInUp 0.6s ease-out;
+    }
+     #education-internship {
+    background: linear-gradient(135deg, #1e0037, #31044d);
+    padding: 60px 0;
+  }
 
-            50% {
-                background-position: 100% 50%;
-            }
+  #education-internship h2 {
+    color: #d8b4fe;
+    text-shadow: 0 0 10px #c084fc, 0 0 20px #a855f7;
+  }
 
-            100% {
-                background-position: 0% 50%;
-            }
-        }
+  #education-internship h3 {
+    color: #d8b4fe;
+    text-shadow: 0 0 8px #c084fc;
+  }
 
-        .animated-background {
-            background: linear-gradient(45deg, #6ee7b7, #3b82f6, #9333ea);
-            background-size: 400% 400%;
-            animation: gradient-animation 15s ease infinite;
-        }
+  #education-internship ul {
+    list-style-type: none;
+    color: #f5e8ff;
+  }
 
-        /* Pointer hover animation */
-        .pointer-hover {
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+  #education-internship li {
+    color: #e5e0ff;
+    margin-bottom: 8px;
+  }
 
-        .pointer-hover:hover {
-            transform: scale(1.1);
-        }
+  #education-internship p {
+    color: #f5e8ff;
+  }
 
-        /* Fade-in Animation */
-        .fade-in {
-            animation: fadeIn 2s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Resume-style card */
-        .resume-card {
-            background-color: #1f2937;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .resume-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Card title hover animation */
-        .resume-card:hover .title {
-            color: #3b82f6;
-        }
-    </style>
-
+  #education-internship .row {
+    margin-bottom: 30px;
+  }
+  </style>
 </head>
+<body>
 
-<body class="bg-gray-900 text-white font-sans animated-background">
+<!-- Loader -->
+<div id="loader">
+  <div class="spinner-border" role="status"></div>
+</div>
 
-    <div class="container mx-auto px-4 py-12">
-        <!-- Header Section -->
-        <header class="text-center mb-12 fade-in">
-            <h1 class="text-5xl font-extrabold mb-4">ARUN K R</h1>
-            <p class="text-xl text-gray-400">WEB DEVELOPER</p>
-        </header>
+<!-- Hero Section -->
+<section class="hero position-relative text-white d-flex align-items-center" style="min-height: 100vh; overflow: hidden;">
+  <div class="container hero-content text-center z-2" data-aos="zoom-in">
+    <h1 class="display-4 fw-bold text-glow">Arun K R</h1>
+    <p class="lead mt-3">Web Developer | Python & Django Expert</p>
+    <a href="#about" class="btn btn-violet mt-4 px-4">Know More</a>
+  </div>
 
-        <!-- Resume Cards Section -->
-        <section class="space-y-8">
-            <!-- About Me Section -->
-            <div class="resume-card fade-in pointer-hover">
-                <h2 class="text-3xl font-semibold title text-blue-400">About Me</h2>
-                <p class="mt-4 text-gray-300">I am a passionate Web Developer with a strong focus on creating beautiful, responsive, and user-friendly web applications. I specialize in Python, Django, and React.</p>
-            </div>
+  <!-- Background Gradient -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 z-0" style="background: radial-gradient(circle at center, #4f0bb3 0%, #120030 80%); opacity: 0.9; z-index: -1;"></div>
 
-            <!-- Education Section -->
-            <div class="resume-card fade-in pointer-hover">
-                <h2 class="text-3xl font-semibold title text-blue-400">Education</h2>
-                <ul class="mt-4 list-disc list-inside text-gray-300">
-                    <li>SSLC – 2016, MPM EMHSS Thammanam</li>
-                    <li>Higher Secondary – 2018, SRV HSS Ernakulam</li>
-                    <li>BCA – 2021, MG University Kerala</li>
-                    <li>MCA – 2025, A.P.J. Abdul Kalam Technological University</li>
-                </ul>
-            </div>
+  <!-- Floating Logos -->
+  <div class="position-absolute w-100 h-100 overflow-hidden z-1">
+    <i class="fab fa-python position-absolute text-warning" style="top: 20%; left: 10%; font-size: 3rem; animation: float 6s infinite;"></i>
+    <i class="fab fa-react position-absolute text-info" style="top: 50%; right: 15%; font-size: 3rem; animation: float 7s infinite;"></i>
+    <i class="fab fa-js-square position-absolute text-warning" style="top: 70%; left: 20%; font-size: 3rem; animation: float 5s infinite;"></i>
+    <i class="fab fa-html5 position-absolute text-danger" style="top: 30%; right: 10%; font-size: 3rem; animation: float 8s infinite;"></i>
+    <i class="fab fa-github position-absolute text-light" style="top: 60%; right: 35%; font-size: 3rem; animation: float 6s infinite;"></i>
+  </div>
+</section>
 
-            <!-- Internship Section -->
-            <div class="resume-card fade-in pointer-hover">
-                <h2 class="text-3xl font-semibold title text-blue-400">Internship</h2>
-                <p class="mt-4 text-gray-300">Full Stack Python Developer at Oneteam Solutions, Kochi (2021–2023)</p>
-            </div>
+<!-- About Me -->
+<section id="about" class="py-5" style="background: linear-gradient(135deg, #1e0037, #31044d);">
+  <div class="container">
+    <div class="row align-items-center g-4" data-aos="fade-up">
+      <div class="col-md-5 text-center">
+        <img src="https://images.unsplash.com/photo-1629909613651-dce5f7d4f0d2" alt="Arun" class="img-fluid rounded shadow" style="border: 2px solid #9333ea;">
+      </div>
+      <div class="col-md-7">
+        <div class="p-4 rounded-4" style="background-color: rgba(50, 0, 80, 0.8); box-shadow: 0 0 20px #9333ea;">
+          <h2 class="text-glow mb-3">About Me</h2>
+          <p>
+            I'm <strong>Arun K R</strong>, an MCA graduate and passionate full-stack developer from Kerala, India. My tech stack includes Python, Django, React, and Machine Learning tools.
+          </p>
+          <p>
+            I love crafting smart, scalable solutions with elegant design and clean code. Whether it’s building a disaster response system or a predictive health app, I focus on real-world impact.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <!-- Skills Section -->
-            <div class="resume-card fade-in pointer-hover">
-                <h2 class="text-3xl font-semibold title text-blue-400">Professional Skills</h2>
-                <ul class="mt-4 list-disc list-inside text-gray-300">
-                    <li>Python, Django</li>
-                    <li>HTML, CSS, JavaScript</li>
-                    <li>SQL</li>
-                    <li>React JS (Basics)</li>
-                    <li>Machine Learning</li>
-                </ul>
-            </div>
+<!-- Projects Section -->
+<section id="projects" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5" data-aos="fade-up">Projects</h2>
+    <div class="row g-4">
+      <div class="col-md-6" data-aos="zoom-in" data-aos-delay="200">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051" class="img-fluid project-image" alt="Disaster Project">
+          <div class="p-4">
+            <h5>Crowd Sourced Disaster Platform</h5>
+            <p>Django + React system for shelter management and alert reports.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6" data-aos="zoom-in" data-aos-delay="400">
+        <div class="project-card">
+          <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74" class="img-fluid project-image" alt="Fitness Project">
+          <div class="p-4">
+            <h5>Personal Fit</h5>
+            <p>Fitness prediction and guidance system with ML support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-4" data-aos="zoom-in">
+      <a href="https://arun-kr07.github.io/portfolio/" class="btn btn-violet px-4" target="_blank">
+        Visit My Portfolio
+      </a>
+    </div>
+  </div>
+</section>
+<!-- Education & Internship Section -->
+<section id="education-internship" class="py-5" style="background: linear-gradient(135deg, #1e0037, #31044d);">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-5" data-aos="fade-down">Education & Internship</h2>
 
-            <!-- Languages Section -->
-            <div class="resume-card fade-in pointer-hover">
-                <h2 class="text-3xl font-semibold title text-blue-400">Languages</h2>
-                <p class="mt-4 text-gray-300">Malayalam, English</p>
-            </div>
-        </section>
+    <!-- Education Section -->
+    <div class="row mb-4" data-aos="fade-right">
+      <div class="col-12">
+        <h3 class="text-glow mb-3">Education</h3>
+        <ul class="list-unstyled">
+          <li><strong>SSLC</strong> – 2016, MPM EMHSS Thammanam</li>
+          <li><strong>Higher Secondary</strong> – 2018, SRV HSS Ernakulam</li>
+          <li><strong>BCA</strong> – 2021, MG University Kerala</li>
+          <li><strong>MCA</strong> – 2025, A.P.J. Abdul Kalam Technological University</li>
+        </ul>
+      </div>
     </div>
 
-</body>
+    <!-- Internship Section -->
+    <div class="row" data-aos="fade-left">
+      <div class="col-12">
+        <h3 class="text-glow mb-3">Internship</h3>
+        <p><strong>Full Stack Python Developer</strong> at Oneteam Solutions, Kochi (2021–2023)</p>
+      </div>
+    </div>
+  </div>
+</section>
 
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-5">
+  <div class="container text-center">
+    <h2 data-aos="fade-down">Contact Me</h2>
+    <p data-aos="fade" data-aos-delay="200">I'm available for freelance or full-time roles. Let's connect!</p>
+    <form class="row g-3 justify-content-center mt-3" style="max-width: 600px; margin: auto;" data-aos="fade-up" data-aos-delay="400">
+      <div class="col-md-6">
+        <label for="name">Name</label>
+        <input type="text" id="name" class="form-control" placeholder="Your Name" required />
+      </div>
+      <div class="col-md-6">
+        <label for="email">Email</label>
+        <input type="email" id="email" class="form-control" placeholder="Your Email" required />
+      </div>
+      <div class="col-12">
+        <label for="message">Message</label>
+        <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-violet px-4">Send Message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="text-center py-4">
+  <p class="mb-0">© 2025 Arun K R | Web Developer</p>
+  <small>Email: arunkrkr12@gmail.com | Phone: 8848058477 | Maradu, Kerala</small>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1000, once: true });
+  window.addEventListener('load', () => {
+    document.getElementById('loader').style.display = 'none';
+  });
+</script>
+
+</body>
 </html>
