@@ -362,7 +362,6 @@
   window.addEventListener('load', () => {
     document.getElementById('loader').style.display = 'none';
 
-    // Check if the URL contains `submitted=true`
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('submitted') === 'true') {
       const contactSection = document.querySelector('#contact');
@@ -370,13 +369,13 @@
       message.className = 'alert alert-success mt-4';
       message.textContent = '✅ Your message has been sent successfully!';
       contactSection.appendChild(message);
-      setTimeout(() => message.remove(), 5000);
-
-      // Optionally scroll to contact section
       contactSection.scrollIntoView({ behavior: 'smooth' });
+
+      setTimeout(() => message.remove(), 5000);
     }
   });
 </script>
+
 
 </body>
 </html>
