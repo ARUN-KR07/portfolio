@@ -325,6 +325,8 @@
   <input type="hidden" name="_subject" value="New Message from Portfolio">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="box">
+  <input type="hidden" name="_next" value="https://arun-kr07.github.io/portfolio/#contact?submitted=true">
+
 
   <div class="col-md-6">
     <label for="name">Name</label>
@@ -356,8 +358,23 @@
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
   AOS.init({ duration: 1000, once: true });
+
   window.addEventListener('load', () => {
     document.getElementById('loader').style.display = 'none';
+
+    // Check if the URL contains `submitted=true`
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('submitted') === 'true') {
+      const contactSection = document.querySelector('#contact');
+      const message = document.createElement('div');
+      message.className = 'alert alert-success mt-4';
+      message.textContent = '✅ Your message has been sent successfully!';
+      contactSection.appendChild(message);
+      setTimeout(() => message.remove(), 5000);
+
+      // Optionally scroll to contact section
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 </script>
 
