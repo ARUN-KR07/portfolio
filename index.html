@@ -279,10 +279,9 @@
       </div>
     </div>
     <div class="text-center mt-4" data-aos="zoom-in">
-      <a href="https://drive.google.com/uc?export=download&id=16sUxthFhUxvJiwEzm_WqXlSPocoOQqyx" class="btn btn-resume mt-3 px-4" target="_blank" rel="noopener">
-          <i class="fas fa-download me-2"></i>Download Resume
+      <a href="https://arun-kr07.github.io/portfolio/" class="btn btn-violet px-4" target="_blank">
+        Visit My Portfolio
       </a>
-
     </div>
   </div>
 </section>
@@ -326,7 +325,7 @@
   <input type="hidden" name="_subject" value="New Message from Portfolio">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="box">
-  <input type="hidden" name="_next" value="https://arun-kr07.github.io/portfolio/?submitted=true#contact">
+  <input type="hidden" name="_next" value="https://arun-kr07.github.io/portfolio/#contact?submitted=true">
 
 
   <div class="col-md-6">
@@ -363,6 +362,7 @@
   window.addEventListener('load', () => {
     document.getElementById('loader').style.display = 'none';
 
+    // Check if the URL contains `submitted=true`
     const urlParams = new URLSearchParams(window.location.search);
     if (urlParams.get('submitted') === 'true') {
       const contactSection = document.querySelector('#contact');
@@ -370,14 +370,13 @@
       message.className = 'alert alert-success mt-4';
       message.textContent = '✅ Your message has been sent successfully!';
       contactSection.appendChild(message);
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-
       setTimeout(() => message.remove(), 5000);
+
+      // Optionally scroll to contact section
+      contactSection.scrollIntoView({ behavior: 'smooth' });
     }
   });
 </script>
-
-
 
 </body>
 </html>
